@@ -1,174 +1,229 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
-    background: #f5efe6;
+body {
+    background: linear-gradient(135deg, #f5efe6 0%, #e8d9c5 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 1rem;
-    font-family:  sans-serif;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
-.container{
+.container {
     background-color: white;
-    border-radius: 1rem;
-    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 1.5rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     max-width: 600px;
     width: 100%;
     overflow: hidden;
     position: relative;
-    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/*screens*/
-.screen{
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* screens */
+.screen {
     display: none;
-    padding: 2rem;
+    padding: 2.5rem;
     text-align: center;
+    animation: fadeIn 0.5s ease;
 }
 
-.screen.active{
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.screen.active {
     display: block;
 }
 
-/*start screen*/
-#start-screen h1{
+/* start screen */
+#start-screen h1 {
     color: #e86a33;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-block;
 }
 
-#start-screen p{
+#start-screen h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #e86a33;
+    border-radius: 2px;
+}
+
+#start-screen p {
     color: #666;
     font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-   
-.quiz-header{
-    margin-bottom: 2rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
 }
 
-#question-text{
+.quiz-header {
+    margin-bottom: 2.5rem;
+}
+
+#question-text {
     color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    line-height: 1.4;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    font-weight: 600;
 }
 
-.quiz-info{
+.quiz-info {
     display: flex;
     justify-content: space-between;
     color: #666;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
 }
 
-.answers-container{
+.answers-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 15px;
+    margin-bottom: 25px;
 }
-   
-.answer-btn{
+
+.answer-btn {
     background-color: #f8f0e5;
     color: #333;
     border: 2px solid #eadbc8;
-    border-radius: 10px;
-    padding: 1rem;
+    border-radius: 12px;
+    padding: 1.2rem;
     cursor: pointer;
     text-align: left;
     transition: all 0.3s ease;
+    font-size: 1.1rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
 }
 
-.answer-btn:hover{
-    background-color: #eadbc8;
+.answer-btn:hover {
+    background-color: #f0e5d5;
     border-color: #dac0ae;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.answers-btn.correct{
-    background-color: #eadbc8;
-    color: #28a745;
-    border-color: #a3f0c4;
+.answer-btn.correct {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-color: #a5d6a7;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
 }
 
-.answer-btn.incorrect{
-    background-color: #fff0f0;
-    color: #dc3545;
-    border-color: #ffbdbd;
+.answer-btn.incorrect {
+    background-color: #ffebee;
+    color: #c62828;
+    border-color: #ef9a9a;
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.2);
 }
 
-.progress-bar{
-    height: 10px;
-    background-color: #f8f0e5;
-    border-radius: 5px;
-    margin-top: 20px;
+.progress-bar {
+    height: 12px;
+    background-color: #f0e5d5;
+    border-radius: 6px;
+    margin-top: 25px;
     overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.progress{
+.progress {
     height: 100%;
-    background-color: #e86a33;
+    background: linear-gradient(90deg, #e86a33 0%, #ff8c5a 100%);
     width: 0%;
-    transition: width 0.3s ease;
+    transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/*Result Screen*/
-
-#result-screen h1{
+/* Result Screen */
+#result-screen h1 {
     color: #e86a33;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+    font-size: 2.5rem;
 }
 
-.result-info{
+.result-info {
     background-color: #f8f0e5;
-    background-radius: 10px;
-    padding: 20px;
-    margin-bottom: 30px;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 35px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.result-info p{
-    font-size: 1.2rem;
+.result-info p {
+    font-size: 1.3rem;
     color: #333;
-    margin-bottom: 2rem;
-
-}  
-
-#result-message{
-    color: #e86a33;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 20px 0;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
-button{
-    background-color: #e86a33;
+#result-message {
+    color: #e86a33;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 25px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(232, 106, 51, 0.1);
+}
+
+button {
+    background: linear-gradient(135deg, #e86a33 0%, #ff8c5a 100%);
     color: #fff;
     border: none;
-    border-radius: 10px;
-    padding: 15px 30px;
-    font-size: 1.1rem;
+    border-radius: 12px;
+    padding: 16px 35px;
+    font-size: 1.2rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(232, 106, 51, 0.3);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-button:hover{
-    background-color: #d45b28;
+button:hover {
+    background: linear-gradient(135deg, #d45b28 0%, #e86a33 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(232, 106, 51, 0.4);
 }
 
-/*Responsive design*/
-@media(max-width: 500px){
-    /*when we hit 500px and below, implement the styles below */
+button:active {
+    transform: translateY(1px);
+}
 
-    .screen{
-        padding: 1rem;
+/* Responsive design */
+@media (max-width: 500px) {
+    .screen {
+        padding: 1.5rem;
     }
 
-     #start-screen h1{
-        font-size: 2rem;
+    #start-screen h1 {
+        font-size: 2.2rem;
+    }
+    
+    #question-text {
+        font-size: 1.4rem;
+    }
+    
+    button {
+        padding: 14px 25px;
     }
 }
