@@ -134,13 +134,15 @@ body{
 .result-info p{
     font-size: 1.2rem;
     color: #333;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+
 }  
 
 #result-message{
     color: #e86a33;
     font-size: 1.5rem;
     font-weight: 600;
+    margin: 20px 0;
 }
 
 button{
@@ -156,4 +158,17 @@ button{
 
 button:hover{
     background-color: #d45b28;
+}
+
+/*Responsive design*/
+@media(max-width: 500px){
+    /*when we hit 500px and below, implement the styles below */
+
+    .screen{
+        padding: 1rem;
+    }
+
+     #start-screen h1{
+        font-size: 2rem;
+    }
 }
